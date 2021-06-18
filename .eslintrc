@@ -1,0 +1,46 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/"
+  ],
+  "extends": [
+    "standard"
+  ],
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/**/*.{ts,tsx}"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "extends": [
+        "plugin:@typescript-eslint/recommended"
+      ]
+    },
+    {
+      "files": [
+        "**/*test.js",
+        "test/**/*"
+      ],
+      "plugins": [
+        "jest"
+      ],
+      "extends": [
+        "plugin:jest/recommended",
+        "plugin:jest/style"
+      ],
+      "env": {
+        "jest/globals": true
+      }
+    }
+  ]
+}

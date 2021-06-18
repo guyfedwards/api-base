@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: dockerfiles/repo.Dockerfile
+    command: yarn dev
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - "8008:8080"
+    volumes:
+      - ./:/home/app/:delegated
+
+  db:
+    image: "postgres:13.3-alpine"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=thisissparta
+      - POSTGRES_DB=api
